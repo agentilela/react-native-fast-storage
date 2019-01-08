@@ -76,4 +76,16 @@ public class RNFastStorageModule extends ReactContextBaseJavaModule {
       promise.reject("Error", "Unable to removeItem");
     }
   }
+  
+  @ReactMethod
+  public void getAllKeys(Promise promise) {
+    try {
+      MMKV kv = MMKV.defaultMMKV();
+      promise.resolve(kv.allKeys());
+    } catch (Error e) {
+      promise.reject("Error", "Unable to getAllKeys");
+    } catch (Exception e) {
+      promise.reject("Error", "Unable to getAllKeys");
+    }
+  }
 }
